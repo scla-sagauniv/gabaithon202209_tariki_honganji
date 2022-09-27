@@ -38,10 +38,16 @@ body {
 }
 
 .body-subtitle {
-  margin-top: 30px;
+  margin-top: 150px;
   font-size: 30px;
+  color: #fecd19;
 }
 
 .body-title {
   font-size: 70px;
+}
+
+.body-button {
+  margin: 90px auto 0 auto;
+  text-align: center;
 }
