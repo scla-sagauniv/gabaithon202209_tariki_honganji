@@ -1,8 +1,8 @@
-import { BrowserRouter, Route ,Routes} from 'react-router-dom';
-import { Game } from './page/Game';
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Game } from "./page/Game";
 import { NotFound } from "./page/NotFound";
-import { Result } from './page/Result';
-import { Start } from './page/Start';
+import { Result } from "./page/Result";
+import { Start } from "./page/Start";
 
 function RouterConfig() {
   return (
@@ -12,7 +12,7 @@ function RouterConfig() {
           <Route index element={<Start />} />
           <Route path="/Game" element={<Game />} />
           <Route path="/Result" element={<Result />} />
-          <Route path="/NotFound" element={<NotFound />} />
+          <Route path="/*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
     </>
