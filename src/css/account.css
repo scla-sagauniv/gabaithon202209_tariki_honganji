@@ -5,6 +5,7 @@
 
 .account-title {
   text-align: center;
+  font-size: 20px;
   margin-top: 20px;
 }
 
@@ -25,6 +26,8 @@ input {
   width: 100%;
   box-sizing: border-box;
   border: solid 1px #ddd;
+  background-color: #fff;
+  opacity: 0.9;
   padding: 10px;
   font-size: 16px;
   outline: none;

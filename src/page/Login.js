@@ -35,35 +35,35 @@ export const Login = () => {
         <Navigate to={`/`} />
       ) : (
         <>
-          <div className="body-container">
+          <main>
             <Navbar />
-            <h1>Login</h1>
-            <form onSubmit={handleSubmit}>
-              <div>
-                <label>Email</label>
-                <input
-                  name="email"
-                  type="email"
-                  value={loginEmail}
-                  onChange={(e) => setLoginEmail(e.target.value)}
-                />
-              </div>
-              <div>
-                <label>Password</label>
-                <input
-                  name="password"
-                  type="password"
-                  value={loginPassword}
-                  onChange={(e) => setLoginPassword(e.target.value)}
-                />
-              </div>
-              <button>Login</button>
-              {/* ↓リンクを追加 */}
-              <p>
-                <Link to={`/register/`}>SignUp</Link>
-              </p>
-            </form>
-          </div>
+            <div className="body-container">
+              <h1 className="account-title">Login</h1>
+              <form onSubmit={handleSubmit}>
+                <div>
+                  <input
+                    name="email"
+                    type="email"
+                    value={loginEmail}
+                    onChange={(e) => setLoginEmail(e.target.value)}
+                  />
+                </div>
+                <div>
+                  <input
+                    name="password"
+                    type="password"
+                    value={loginPassword}
+                    onChange={(e) => setLoginPassword(e.target.value)}
+                  />
+                </div>
+                <button className="button-all">LogIn</button>
+                {/* ↓リンクを追加 */}
+                <p>
+                  <Link to={`/register/`}>SignUp</Link>
+                </p>
+              </form>
+            </div>
+          </main>
         </>
       )}
     </>

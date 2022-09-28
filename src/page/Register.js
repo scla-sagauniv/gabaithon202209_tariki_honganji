@@ -65,7 +65,7 @@ export const Register = () => {
                     onChange={(e) => setRegisterPassword(e.target.value)}
                   />
                 </div>
-                <button>SignUp</button>
+                <button className="button-all">SignUp</button>
                 {/* ↓リンクを追加 */}
                 <p>
                   <Link to={`/login/`}>Login</Link>
