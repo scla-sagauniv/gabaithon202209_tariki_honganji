@@ -7,6 +7,7 @@ import { Button } from "../components/Button";
 
 export const Game = () => {
   const [submitPosition, setSubmitPosition] = useState();
+  console.log(submitPosition);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   function showResult() {
