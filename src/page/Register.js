@@ -46,7 +46,7 @@ export const Register = () => {
             <Navbar />
             <div className="body-container">
               <h1 className="account-title">SignUp</h1>
-              <form onSubmit={handleSubmit}>
+              <form className="account-form" onSubmit={handleSubmit}>
                 <div>
                   {/* <label>Email</label> */}
                   <input

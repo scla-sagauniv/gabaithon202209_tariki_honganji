@@ -6,11 +6,6 @@ import {
   Polyline
 } from "@react-google-maps/api";
 
-const containerStyle = {
-  height: "100vh",
-  width: "100%"
-};
-
 // 佐賀大学
 const center = {
   lat: 33.24194428301201,

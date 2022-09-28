@@ -24,8 +24,10 @@ export const Start = () => {
     <main>
       <Navbar email={user?.email} />
       <div className="body-container">
-        <p className="body-subtitle">LET'S EXPLORE</p>
-        <p className="body-title">THE SAGA</p>
+        <div className="container-title">
+          <p className="body-subtitle">LET'S EXPLORE</p>
+          <p className="body-title">THE SAGA</p>
+        </div>
         <div className="body-button">
           {user?.email ? (
             <Button name="Play" path="/Game" />
