@@ -5,6 +5,7 @@ import { Register } from "./page/Register";
 import { Login } from "./page/Login";
 import { Result } from "./page/Result";
 import { Start } from "./page/Start";
+import { Quiz } from "./page/Quiz";
 
 function RouterConfig() {
   return (
@@ -16,6 +17,7 @@ function RouterConfig() {
           <Route path="/Login" element={<Login />} />
           <Route path="/Game" element={<Game />} />
           <Route path="/Result" element={<Result />} />
+          <Route path="/Quiz" element={<Quiz />} />
           <Route path="/*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

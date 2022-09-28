@@ -45,7 +45,7 @@ export const Start = () => {
         )}
         {user?.email && (
           <div className="body-button">
-            <Button name="Create Quiz" path="" />
+            <Button name="Create Quiz" path="/Quiz" />
           </div>
         )}
       </div>
