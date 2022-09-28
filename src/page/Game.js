@@ -4,10 +4,13 @@ import { Navbar } from "../components/Navbar";
 import { HintMenu } from "../components/HintMenu";
 import "../css/Game.css";
 import { Button } from "../components/Button";
+import ScoreBoard from "../components/ScoreBoard";
 
 export const Game = () => {
-  const [submitPosition, setSubmitPosition] = useState();
-  console.log(submitPosition);
+  const [selectedPosition, setSelectedPosition] = useState();
+  const [distance, setDistance] = useState();
+  console.log(selectedPosition);
+  console.log(distance);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   function showResult() {
@@ -16,6 +19,7 @@ export const Game = () => {
   return (
     <>
       <Navbar />
+
       <div className='game-area'>
         {isOpen ? (
           <>
@@ -25,13 +29,18 @@ export const Game = () => {
         ) : (
           <button onClick={() => setIsOpen(true)}>開く</button>
         )}
+
         <div className='submit-button' onClick={showResult}>
-          {/* ボタンを押したら、正解との線を引く関数を走らせる */}
-          <Button name='guess' />
+          {isSubmitted && selectedPosition ? (
+            <ScoreBoard distance={distance} />
+          ) : (
+            <Button name='guess' />
+          )}
         </div>
         <GoogleMapComponent
-          setSubmitPosition={setSubmitPosition}
+          setSelectedPosition={setSelectedPosition}
           isSubmitted={isSubmitted}
+          setDistance={setDistance}
         />
       </div>
     </>

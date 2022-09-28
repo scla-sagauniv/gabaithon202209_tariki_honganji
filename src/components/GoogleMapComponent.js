@@ -23,7 +23,11 @@ const ansPos = {
   lng: 130.20645664905373
 };
 
-const GoogleMapComponent = ({ setSubmitPosition, isSubmitted }) => {
+const GoogleMapComponent = ({
+  setSelectedPosition,
+  isSubmitted,
+  setDistance
+}) => {
   const [pin, setPin] = useState();
 
   const setLatLng = props => {
@@ -32,7 +36,7 @@ const GoogleMapComponent = ({ setSubmitPosition, isSubmitted }) => {
       lng: props.latLng.lng()
     };
     setPin(pos);
-    setSubmitPosition(pos);
+    setSelectedPosition(pos);
   };
 
   function haversineDistance(pos, ans) {
@@ -67,12 +71,12 @@ const GoogleMapComponent = ({ setSubmitPosition, isSubmitted }) => {
         zoom={10.5}
         onClick={setLatLng}>
         {pin && <Marker position={pin} />}
-        {isSubmitted && (
+        {pin && isSubmitted && (
           <>
             <Polyline
               path={getLatLngPolyline({ origin: ansPos, destination: pin })}
             />
-            {console.log(haversineDistance(pin, ansPos))}
+            {setDistance(haversineDistance(pin, ansPos))}
           </>
         )}
       </GoogleMap>
