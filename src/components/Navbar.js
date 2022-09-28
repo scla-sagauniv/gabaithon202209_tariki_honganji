@@ -41,7 +41,7 @@ export const Navbar = () => {
             </div>
             {user?.email && (
               <Link onClick={logout} className="header-logout">
-                <img src={image} className="logout-img" />
+                <img src={image} className="logout-img" alt="" />
               </Link>
             )}
           </div>
