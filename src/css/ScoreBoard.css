@@ -1,0 +1,10 @@
+.score-container {
+  color: #fff;
+  background-color: #13162f;
+  max-width: 47rem;
+  display: flex;
+  flex-direction: column;
+  animation: 1.2svar (--smooth) single-player-round-results_slideIn__FF_HV
+      forwards,
+    0.6s var(--smooth) single-player-round-results_shrink__KjCh8 1.4s forwards;
+}
