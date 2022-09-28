@@ -6,6 +6,7 @@ const containerStyle = {
   width: "100%"
 };
 
+// 佐賀大学
 const center = {
   lat: 33.24194428301201,
   lng: 130.2903679388433
@@ -27,7 +28,7 @@ const GoogleMapComponent = ({ setSubmitPosition }) => {
       <GoogleMap
         mapContainerStyle={containerStyle}
         center={center}
-        zoom={17}
+        zoom={10.5}
         onClick={setLatLng}>
         {pin && <Marker position={pin} />}
       </GoogleMap>
