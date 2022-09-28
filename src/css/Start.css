@@ -5,7 +5,7 @@ header {
 }
 
 .header-box {
-  display: block;
+  display: flex;
   margin: 5px auto;
 }
 
@@ -18,11 +18,33 @@ header {
   text-align: left;
 }
 
+.header-right-item {
+  display: flex;
+  align-items: center;
+}
+
+.userName {
+  text-align: right;
+}
+
+.userName p {
+  color: #fff;
+  font-size: 22px;
+  font-weight: 200;
+  letter-spacing: 0em;
+  margin: auto 10px auto 0;
+}
+
+.logout-img {
+  width: 32px;
+  height: 32px;
+  margin: auto 10px auto 0;
+}
 body {
   display: block;
 }
 .body-container {
-  background-image: url("../../public/imgs/baloon.png");
+  background-image: url("../imgs/baloon.png");
   background-color: rgba(255, 255, 255, 0.562);
   content: "";
   display: block;
@@ -50,6 +72,6 @@ body {
 }
 
 .body-button {
-  margin: 90px auto 0 auto;
+  margin: 40px auto 0 auto;
   text-align: center;
 }
