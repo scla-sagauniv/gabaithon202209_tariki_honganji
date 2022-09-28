@@ -1,5 +1,10 @@
 import React, { useState } from "react";
-import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
+import {
+  GoogleMap,
+  LoadScript,
+  Marker,
+  Polyline
+} from "@react-google-maps/api";
 
 const containerStyle = {
   height: "100vh",
@@ -12,7 +17,13 @@ const center = {
   lng: 130.2903679388433
 };
 
-const GoogleMapComponent = ({ setSubmitPosition }) => {
+// firestoreから取得
+const ansPos = {
+  lat: 33.37237365922299,
+  lng: 130.20645664905373
+};
+
+const GoogleMapComponent = ({ setSubmitPosition, isSubmitted }) => {
   const [pin, setPin] = useState();
 
   const setLatLng = props => {
@@ -24,6 +35,30 @@ const GoogleMapComponent = ({ setSubmitPosition }) => {
     setSubmitPosition(pos);
   };
 
+  function haversineDistance(pos, ans) {
+    var R = 6371.071; // Radius of the Earth in miles
+    var rlat1 = pos.lat * (Math.PI / 180);
+    // Convert degrees to radians
+    var rlat2 = ans.lat * (Math.PI / 180);
+    // Convert degrees to radians
+    var difflat = rlat2 - rlat1; // Radian difference (latitudes)
+    var difflon = (ans.lng - pos.lng) * (Math.PI / 180); // Radian difference (longitudes)
+
+    var d =
+      2 *
+      R *
+      Math.asin(
+        Math.sqrt(
+          Math.sin(difflat / 2) * Math.sin(difflat / 2) +
+            Math.cos(rlat1) *
+              Math.cos(rlat2) *
+              Math.sin(difflon / 2) *
+              Math.sin(difflon / 2)
+        )
+      );
+    return d;
+  }
+
   return (
     <LoadScript googleMapsApiKey={process.env.REACT_APP_GOOGLE_MAP_API_KEY}>
       <GoogleMap
@@ -32,9 +67,22 @@ const GoogleMapComponent = ({ setSubmitPosition }) => {
         zoom={10.5}
         onClick={setLatLng}>
         {pin && <Marker position={pin} />}
+        {isSubmitted && (
+          <>
+            <Polyline
+              path={getLatLngPolyline({ origin: ansPos, destination: pin })}
+            />
+            {console.log(haversineDistance(pin, ansPos))}
+          </>
+        )}
       </GoogleMap>
     </LoadScript>
   );
 };
+
+const getLatLngPolyline = ({ origin, destination }) => [
+  { lat: origin.lat, lng: origin.lng },
+  { lat: destination.lat, lng: destination.lng }
+];
 
 export default GoogleMapComponent;

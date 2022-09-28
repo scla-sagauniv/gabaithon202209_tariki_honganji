@@ -7,30 +7,31 @@ import { Button } from "../components/Button";
 
 export const Game = () => {
   const [submitPosition, setSubmitPosition] = useState();
-
+  const [isSubmitted, setIsSubmitted] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
-
+  function showResult() {
+    setIsSubmitted(true);
+  }
   return (
     <>
       <Navbar />
-      <div className="game-area">
+      <div className='game-area'>
         {isOpen ? (
           <>
-            <HintMenu hints="ふみや" />
+            <HintMenu hints='ふみや' />
             <button onClick={() => setIsOpen(false)}>閉じる</button>
           </>
         ) : (
           <button onClick={() => setIsOpen(true)}>開く</button>
         )}
-        <div className="submit-button">
+        <div className='submit-button' onClick={showResult}>
           {/* ボタンを押したら、正解との線を引く関数を走らせる */}
-          <Button
-            name="guess"
-            path="/Result"
-            onClick={() => console.log(submitPosition)}
-          />
+          <Button name='guess' />
         </div>
-        <GoogleMapComponent setSubmitPosition={setSubmitPosition} />
+        <GoogleMapComponent
+          setSubmitPosition={setSubmitPosition}
+          isSubmitted={isSubmitted}
+        />
       </div>
     </>
   );
