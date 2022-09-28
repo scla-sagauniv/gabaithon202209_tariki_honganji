@@ -1,11 +1,20 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React from "react";
+import { Navbar } from "../components/Navbar";
+import { Button } from "../components/Button";
+
+import "../css/Start.css";
 
 export const Start = () => {
   return (
-    <>
-      <h2>ゲーム名</h2>
-      <Link to="/Game">スタート</Link>
-    </>
-  )
-}
+    <main>
+      <Navbar />
+      <div className="body-container">
+        <p className="body-subtitle">LET'S EXPLORE</p>
+        <p className="body-title">THE SAGA</p>
+        <div className="body-button">
+          <Button name="play" path="/Game" />
+        </div>
+      </div>
+    </main>
+  );
+};

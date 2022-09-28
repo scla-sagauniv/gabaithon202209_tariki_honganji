@@ -1,10 +1,11 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './css/index.css';
-import RouterConfig from './RouterConfig';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./css/index.css";
+import RouterConfig from "./RouterConfig";
+import reportWebVitals from "./reportWebVitals";
+import "./css/reset.css";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <RouterConfig />
