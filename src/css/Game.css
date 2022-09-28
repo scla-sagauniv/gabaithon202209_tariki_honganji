@@ -5,3 +5,12 @@
 button {
   color: red;
 }
+.submit-button {
+  position: absolute;
+  width: fit-content;
+  height: fit-content;
+  z-index: 1;
+  font-size: 30px;
+  bottom: 128px;
+  right: 128px;
+}
