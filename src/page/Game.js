@@ -6,6 +6,11 @@ import "../css/Game.css";
 import { Button } from "../components/Button";
 import ScoreBoard from "../components/ScoreBoard";
 
+const containerStyle = {
+  height: "100vh",
+  width: "100%"
+};
+
 export const Game = () => {
   const [selectedPosition, setSelectedPosition] = useState();
   const [distance, setDistance] = useState();
@@ -41,6 +46,7 @@ export const Game = () => {
           setSelectedPosition={setSelectedPosition}
           isSubmitted={isSubmitted}
           setDistance={setDistance}
+          containerStyle={containerStyle}
         />
       </div>
     </>

@@ -21,7 +21,8 @@ const ansPos = {
 const GoogleMapComponent = ({
   setSelectedPosition,
   isSubmitted,
-  setDistance
+  setDistance,
+  containerStyle
 }) => {
   const [pin, setPin] = useState();
 
