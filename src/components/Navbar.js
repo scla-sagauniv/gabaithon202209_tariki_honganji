@@ -50,28 +50,3 @@ export const Navbar = () => {
     </>
   );
 };
-
-/* Mypage.js */
-
-// const Mypage = () => {
-//   /* ↓state変数「user」を定義 */
-//   const [user, setUser] = useState("");
-
-//   /* ↓ログインしているかどうかを判定する */
-//   useEffect(() => {
-//     onAuthStateChanged(auth, (currentUser) => {
-//       setUser(currentUser);
-//     });
-//   }, []);
-
-//   return (
-//     <>
-//       <h1>マイページ</h1>
-//       {/* ↓ユーザーのメールアドレスを表示（ログインしている場合） */}
-//       <p>{user?.email}</p>
-//       <button>ログアウト</button>
-//     </>
-//   );
-// };
-
-// export default Mypage;
