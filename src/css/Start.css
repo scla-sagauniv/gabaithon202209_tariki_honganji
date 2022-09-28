@@ -1,19 +1,21 @@
 header {
   width: 100%;
   background-color: #049b04;
+  display: inline-block;
 }
 
 .header-box {
   display: block;
+  margin: 5px auto;
 }
 
 .header-title {
+  margin: 10px auto 10px 10px;
   color: #fff;
   font-size: 32px;
   font-weight: 400;
   letter-spacing: 0em;
   text-align: left;
-  margin-left: 10px;
 }
 
 body {
