@@ -43,6 +43,11 @@ export const Start = () => {
             <Button name="Login" path="/Login" />
           </div>
         )}
+        {user?.email && (
+          <div className="body-button">
+            <Button name="Create Quiz" path="" />
+          </div>
+        )}
       </div>
     </main>
   );
