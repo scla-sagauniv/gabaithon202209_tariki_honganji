@@ -3,33 +3,32 @@ import {
   GoogleMap,
   LoadScript,
   Marker,
-  Polyline
+  Polyline,
 } from "@react-google-maps/api";
-
-const containerStyle = {
-  height: "100vh",
-  width: "100%"
-};
 
 // 佐賀大学
 const center = {
   lat: 33.24194428301201,
-  lng: 130.2903679388433
+  lng: 130.2903679388433,
 };
 
 // firestoreから取得
 const ansPos = {
   lat: 33.37237365922299,
-  lng: 130.20645664905373
+  lng: 130.20645664905373,
 };
 
-const GoogleMapComponent = ({ setSubmitPosition, isSubmitted }) => {
+const GoogleMapComponent = ({
+  setSubmitPosition,
+  isSubmitted,
+  containerStyle,
+}) => {
   const [pin, setPin] = useState();
 
-  const setLatLng = props => {
+  const setLatLng = (props) => {
     const pos = {
       lat: props.latLng.lat(),
-      lng: props.latLng.lng()
+      lng: props.latLng.lng(),
     };
     setPin(pos);
     setSubmitPosition(pos);
@@ -65,7 +64,8 @@ const GoogleMapComponent = ({ setSubmitPosition, isSubmitted }) => {
         mapContainerStyle={containerStyle}
         center={center}
         zoom={10.5}
-        onClick={setLatLng}>
+        onClick={setLatLng}
+      >
         {pin && <Marker position={pin} />}
         {isSubmitted && (
           <>
@@ -82,7 +82,7 @@ const GoogleMapComponent = ({ setSubmitPosition, isSubmitted }) => {
 
 const getLatLngPolyline = ({ origin, destination }) => [
   { lat: origin.lat, lng: origin.lng },
-  { lat: destination.lat, lng: destination.lng }
+  { lat: destination.lat, lng: destination.lng },
 ];
 
 export default GoogleMapComponent;

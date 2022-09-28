@@ -39,7 +39,7 @@ export const Login = () => {
             <Navbar />
             <div className="body-container">
               <h1 className="account-title">Login</h1>
-              <form onSubmit={handleSubmit}>
+              <form className="account-form" onSubmit={handleSubmit}>
                 <div>
                   <input
                     name="email"

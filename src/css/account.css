@@ -9,7 +9,7 @@
   margin-top: 20px;
 }
 
-form {
+.account-form {
   display: flex;
   justify-content: center;
   flex-direction: column;
