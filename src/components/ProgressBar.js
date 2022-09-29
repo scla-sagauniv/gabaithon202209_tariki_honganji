@@ -18,13 +18,13 @@ export default function ProgressBar({ score }) {
 
   React.useEffect(() => {
     console.log("prog", progScore);
-    let oldProgress = 0;
+
     const timer = setInterval(() => {
       setProgress(oldProgress => {
         if (oldProgress === progScore) {
           return progScore;
         }
-        const diff = 5;
+
         return Math.min(100, progScore);
       });
     }, 500);
@@ -32,6 +32,7 @@ export default function ProgressBar({ score }) {
     return () => {
       clearInterval(timer);
     };
+    // eslint-disable-next-line
   }, []);
 
   return (
