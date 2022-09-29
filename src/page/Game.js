@@ -6,10 +6,11 @@ import "../css/Game.css";
 import { Button } from "../components/Button";
 import ScoreBoard from "../components/ScoreBoard";
 import { useFireStore } from "../hooks/useFireStore";
+import { Loading } from "../components/Loading";
 
 const containerStyle = {
   height: "calc(100vh - 70px)",
-  width: "100%",
+  width: "100%"
 };
 
 export const Game = () => {
@@ -22,42 +23,50 @@ export const Game = () => {
   function showResult() {
     setIsSubmitted(true);
   }
+  const [start, setStart] = useState(false);
+  setTimeout(function () {
+    setStart(true);
+  }, 3000);
 
   const { question } = useFireStore();
 
-  return (
-    <>
-      <Navbar />
+  if (start) {
+    return (
+      <>
+        <Navbar />
 
-      <div className="game-area">
-        {isOpen ? (
-          <>
-            <HintMenu hints={question?.hints} />
-            <button onClick={() => setIsOpen(false)}>閉じる</button>
-          </>
-        ) : (
-          <button onClick={() => setIsOpen(true)}>開く</button>
-        )}
-
-        <div onClick={showResult}>
-          {isSubmitted && selectedPosition ? (
-            <div className="score-board">
-              <ScoreBoard distance={distance} />
-            </div>
+        <div className='game-area'>
+          {isOpen ? (
+            <>
+              <HintMenu hints={question?.hints} />
+              <button onClick={() => setIsOpen(false)}>閉じる</button>
+            </>
           ) : (
-            <div className="submit-button">
-              <Button name="guess" />
-            </div>
+            <button onClick={() => setIsOpen(true)}>開く</button>
           )}
+
+          <div onClick={showResult}>
+            {isSubmitted && selectedPosition ? (
+              <div className='score-board'>
+                <ScoreBoard distance={distance} />
+              </div>
+            ) : (
+              <div className='submit-button'>
+                <Button name='guess' />
+              </div>
+            )}
+          </div>
+          <GoogleMapComponent
+            setSelectedPosition={setSelectedPosition}
+            isSubmitted={isSubmitted}
+            setDistance={setDistance}
+            containerStyle={containerStyle}
+            ansPos={question?.latlng}
+          />
         </div>
-        <GoogleMapComponent
-          setSelectedPosition={setSelectedPosition}
-          isSubmitted={isSubmitted}
-          setDistance={setDistance}
-          containerStyle={containerStyle}
-          ansPos={question?.latlng}
-        />
-      </div>
-    </>
-  );
+      </>
+    );
+  } else {
+    return <Loading />;
+  }
 };

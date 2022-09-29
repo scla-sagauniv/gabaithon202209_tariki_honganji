@@ -4,25 +4,28 @@ import LinearProgress from "@mui/material/LinearProgress";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 
-export default function ProgressBar() {
+export default function ProgressBar({ score }) {
   const [progress, setProgress] = React.useState(50);
   const theme = createTheme({
     palette: {
       // yellow
       shinku: {
-        main: "#fecd19",
-      },
-    },
+        main: "#fecd19"
+      }
+    }
   });
+  const progScore = score / 10;
 
   React.useEffect(() => {
+    console.log("prog", progScore);
+    let oldProgress = 0;
     const timer = setInterval(() => {
-      setProgress((oldProgress) => {
-        if (oldProgress === 100) {
-          return 0;
+      setProgress(oldProgress => {
+        if (oldProgress === progScore) {
+          return progScore;
         }
-        const diff = Math.random() * 10;
-        return Math.min(oldProgress + diff, 100);
+        const diff = 5;
+        return Math.min(100, progScore);
       });
     }, 500);
 
@@ -36,9 +39,9 @@ export default function ProgressBar() {
       <CssBaseline />
       <Box sx={{ width: "50%" }}>
         <LinearProgress
-          variant="determinate"
+          variant='determinate'
           value={progress}
-          color="warning"
+          color='warning'
         />
       </Box>
     </ThemeProvider>
