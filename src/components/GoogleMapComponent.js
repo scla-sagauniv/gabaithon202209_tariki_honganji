@@ -3,33 +3,41 @@ import {
   GoogleMap,
   LoadScript,
   Marker,
-  Polyline
+  Polyline,
 } from "@react-google-maps/api";
 
 // 佐賀大学
 const center = {
   lat: 33.24194428301201,
-  lng: 130.2903679388433
+  lng: 130.2903679388433,
 };
 
 // firestoreから取得
-const ansPos = {
-  lat: 33.37237365922299,
-  lng: 130.20645664905373
-};
+// const ansPos = {
+//   lat: 33.37237365922299,
+//   lng: 130.20645664905373,
+// };
 
 const GoogleMapComponent = ({
   setSelectedPosition,
   isSubmitted,
   setDistance,
-  containerStyle
+  containerStyle,
+  ansPos,
 }) => {
   const [pin, setPin] = useState();
+  let ansPosObj;
+  if (ansPos) {
+    ansPosObj = {
+      lat: ansPos._lat,
+      lng: ansPos._long,
+    };
+  }
 
-  const setLatLng = props => {
+  const setLatLng = (props) => {
     const pos = {
       lat: props.latLng.lat(),
-      lng: props.latLng.lng()
+      lng: props.latLng.lng(),
     };
     setPin(pos);
     setSelectedPosition(pos);
@@ -65,14 +73,15 @@ const GoogleMapComponent = ({
         mapContainerStyle={containerStyle}
         center={center}
         zoom={10.5}
-        onClick={setLatLng}>
+        onClick={setLatLng}
+      >
         {pin && <Marker position={pin} />}
         {pin && isSubmitted && (
           <>
             <Polyline
-              path={getLatLngPolyline({ origin: ansPos, destination: pin })}
+              path={getLatLngPolyline({ origin: ansPosObj, destination: pin })}
             />
-            {setDistance(haversineDistance(pin, ansPos))}
+            {setDistance(haversineDistance(pin, ansPosObj))}
           </>
         )}
       </GoogleMap>
@@ -82,7 +91,7 @@ const GoogleMapComponent = ({
 
 const getLatLngPolyline = ({ origin, destination }) => [
   { lat: origin.lat, lng: origin.lng },
-  { lat: destination.lat, lng: destination.lng }
+  { lat: destination.lat, lng: destination.lng },
 ];
 
 export default GoogleMapComponent;
