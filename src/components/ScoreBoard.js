@@ -31,6 +31,7 @@ const ScoreBoard = ({ distance }) => {
           </span>
           from the correct location.
         </div>
+        {score <= 600 && <div className='saga'>差がすごい！！！www</div>}
       </div>
     </>
   );
