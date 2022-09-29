@@ -1,6 +1,6 @@
 import { getDocs, collection } from "firebase/firestore";
 import { useEffect, useState } from "react";
-import { db, auth } from "../FirebaseConfig.js";
+import { db } from "../FirebaseConfig.js";
 
 export const useFireStore = () => {
   const [questions, setQuestions] = useState([]);
@@ -11,6 +11,7 @@ export const useFireStore = () => {
     getQuestionList().then(() => {
       getRandomQuestion();
     });
+    // eslint-disable-next-line
   }, [guard]);
 
   const getQuestionList = async () => {
@@ -27,14 +28,14 @@ export const useFireStore = () => {
     }
   };
 
-  const getUser = () => {
-    // ログインしているuserのuidと比べて、firestoreのuser情報を表示
-  };
+  // const getUser = () => {
+  //   // ログインしているuserのuidと比べて、firestoreのuser情報を表示
+  // };
 
   const getRandomQuestion = () => {
     var rand = Math.floor(Math.random() * questions.length);
     setQuestion(questions[rand]);
   };
 
-  return { question, getRandomQuestion };
+  return { question };
 };
