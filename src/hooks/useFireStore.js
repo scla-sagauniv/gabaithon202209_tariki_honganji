@@ -1,23 +1,40 @@
 import { getDocs, collection } from "firebase/firestore";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { db, auth } from "../FirebaseConfig.js";
 
 export const useFireStore = () => {
   const [questions, setQuestions] = useState([]);
-  const [users, setUsers] = useState([]);
+  const [question, setQuestion] = useState([]);
+  const [guard, setGuard] = useState("");
 
-  const getFireStoreList = async () => {
+  useEffect(() => {
+    getQuestionList().then(() => {
+      getRandomQuestion();
+    });
+  }, [guard]);
+
+  const getQuestionList = async () => {
     try {
-      console.log("auth", auth);
       const questionsCollectionRef = collection(db, "QuestionPlace");
-      getDocs(questionsCollectionRef).then((querySnapshot) => {
+      getDocs(questionsCollectionRef).then(querySnapshot => {
         setQuestions(
-          querySnapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
+          querySnapshot.docs.map(doc => ({ ...doc.data(), id: doc.id }))
         );
+        setGuard("stop");
       });
     } catch (error) {
-      console.log(error);
+      console.log("error", error);
     }
   };
-  return { getFireStoreList, users, questions };
+
+  const getUser = () => {
+    // ログインしているuserのuidと比べて、firestoreのuser情報を表示
+  };
+
+  const getRandomQuestion = () => {
+    var rand = Math.floor(Math.random() * questions.length);
+    setQuestion(questions[rand]);
+  };
+
+  return { question, getRandomQuestion };
 };
