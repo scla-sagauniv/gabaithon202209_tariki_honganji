@@ -2,8 +2,13 @@
   display: flex;
 }
 
-button {
-  color: red;
+.hint-button {
+  text-align: center;
+  box-shadow: 0 15px 0 0 rgba(0, 0, 0, 0.97);
+}
+
+.hint-icon {
+  width: 40px;
 }
 .submit-button {
   position: absolute;

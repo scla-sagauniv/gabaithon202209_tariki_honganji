@@ -7,6 +7,7 @@ import { Button } from "../components/Button";
 import ScoreBoard from "../components/ScoreBoard";
 import { useFireStore } from "../hooks/useFireStore";
 import { Loading } from "../components/Loading";
+import image from "../imgs/hint-icon.png";
 
 const containerStyle = {
   height: "calc(100vh - 70px)",
@@ -39,10 +40,14 @@ export const Game = () => {
           {isOpen ? (
             <>
               <HintMenu hints={question?.hints} />
-              <button onClick={() => setIsOpen(false)}>閉じる</button>
+              <button className='hint-button' onClick={() => setIsOpen(false)}>
+                <img className='hint-icon' src={image} alt='' />
+              </button>
             </>
           ) : (
-            <button onClick={() => setIsOpen(true)}>開く</button>
+            <button className='hint-button' onClick={() => setIsOpen(true)}>
+              <img className='hint-icon' src={image} alt='' />
+            </button>
           )}
 
           <div onClick={showResult}>
