@@ -17,14 +17,16 @@ const ScoreBoard = ({ distance }) => {
 
   return (
     <>
-      <div className="score-container">
-        <div className="score" data-num={score}>
-          0
+      <div className='score-container'>
+        <div className='score-div'>
+          <span className='score' data-num={score}>
+            0
+          </span>
         </div>
-        <ProgressBar />
-        <div className="distance-description">
+        {score && <ProgressBar score={score} />}
+        <div className='distance-description'>
           Your guess was
-          <span className="sml" data-num={sml}>
+          <span className='sml' data-num={sml}>
             0
           </span>
           from the correct location.

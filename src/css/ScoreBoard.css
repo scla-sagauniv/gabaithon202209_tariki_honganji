@@ -20,10 +20,14 @@
   width: 100%;
   height: 35%;
 }
-
-.score {
+.score-div {
   margin-bottom: 20px;
+}
+.score {
   color: #fecd19;
+}
+.score::after {
+  content: " points";
 }
 
 .css-5xe99f-MuiLinearProgress-bar1 {
@@ -39,4 +43,8 @@
 }
 .sml::after {
   content: "km ";
+}
+
+.distance-description {
+  margin-top: 20px;
 }
