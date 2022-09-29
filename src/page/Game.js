@@ -32,7 +32,7 @@ export const Game = () => {
       <div className='game-area'>
         {isOpen ? (
           <>
-            <HintMenu hints='ふみや' />
+            <HintMenu hints={question?.hints} />
             <button onClick={() => setIsOpen(false)}>閉じる</button>
           </>
         ) : (
