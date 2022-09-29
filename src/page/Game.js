@@ -5,6 +5,7 @@ import { HintMenu } from "../components/HintMenu";
 import "../css/Game.css";
 import { Button } from "../components/Button";
 import ScoreBoard from "../components/ScoreBoard";
+import { useFireStore } from "../hooks/useFireStore";
 
 const containerStyle = {
   height: "100vh",
@@ -14,13 +15,16 @@ const containerStyle = {
 export const Game = () => {
   const [selectedPosition, setSelectedPosition] = useState();
   const [distance, setDistance] = useState();
-  console.log(selectedPosition);
-  console.log(distance);
+  console.log("selectPosition", selectedPosition);
+  console.log("distance", distance);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   function showResult() {
     setIsSubmitted(true);
   }
+
+  const { question } = useFireStore();
+
   return (
     <>
       <Navbar />
@@ -28,13 +32,12 @@ export const Game = () => {
       <div className='game-area'>
         {isOpen ? (
           <>
-            <HintMenu hints='ふみや' />
+            <HintMenu hints={question?.hints} />
             <button onClick={() => setIsOpen(false)}>閉じる</button>
           </>
         ) : (
           <button onClick={() => setIsOpen(true)}>開く</button>
         )}
-
         <div className='submit-button' onClick={showResult}>
           {isSubmitted && selectedPosition ? (
             <ScoreBoard distance={distance} />
@@ -47,6 +50,7 @@ export const Game = () => {
           isSubmitted={isSubmitted}
           setDistance={setDistance}
           containerStyle={containerStyle}
+          ansPos={question?.latlng}
         />
       </div>
     </>
