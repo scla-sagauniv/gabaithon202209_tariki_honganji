@@ -17,7 +17,7 @@ const containerStyle = {
 
 export const Quiz = () => {
   const [selectedPosition, setSelectedPosition] = useState();
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, reset } = useForm();
   const onSubmit = async data => {
     const obj = {};
     let hints = [];
@@ -33,6 +33,7 @@ export const Quiz = () => {
     console.log("obj", obj);
     const newColRef = doc(collection(db, "QuestionPlace"));
     await setDoc(newColRef, obj);
+    reset();
   };
 
   return (
@@ -45,19 +46,28 @@ export const Quiz = () => {
             <div className='form-account'>
               <div>
                 <label>Place</label>
-                <input {...register("place")} />
+                <input {...register("place", { required: true })} />
               </div>
               <div>
                 <label>Hint1(Object)</label>
-                <input name='Hint1' {...register("Hint1")} />
+                <input
+                  name='Hint1'
+                  {...register("Hint1", { required: true })}
+                />
               </div>
               <div>
                 <label>Hint2(Description)</label>
-                <input name='Hint2' {...register("Hint2")} />
+                <input
+                  name='Hint2'
+                  {...register("Hint2", { required: true })}
+                />
               </div>
               <div>
                 <label>Hint3(City)</label>
-                <input name='Hint3' {...register("Hint3")} />
+                <input
+                  name='Hint3'
+                  {...register("Hint3", { required: true })}
+                />
               </div>
               <button className='button-all' type='submit'>
                 Create Quiz
