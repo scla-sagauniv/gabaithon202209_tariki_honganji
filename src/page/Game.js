@@ -7,8 +7,8 @@ import { Button } from "../components/Button";
 import ScoreBoard from "../components/ScoreBoard";
 
 const containerStyle = {
-  height: "100vh",
-  width: "100%"
+  height: "calc(100vh - 70px)",
+  width: "100%",
 };
 
 export const Game = () => {
@@ -25,21 +25,25 @@ export const Game = () => {
     <>
       <Navbar />
 
-      <div className='game-area'>
+      <div className="game-area">
         {isOpen ? (
           <>
-            <HintMenu hints='ふみや' />
+            <HintMenu hints="ふみや" />
             <button onClick={() => setIsOpen(false)}>閉じる</button>
           </>
         ) : (
           <button onClick={() => setIsOpen(true)}>開く</button>
         )}
 
-        <div className='submit-button' onClick={showResult}>
+        <div onClick={showResult}>
           {isSubmitted && selectedPosition ? (
-            <ScoreBoard distance={distance} />
+            <div className="score-board">
+              <ScoreBoard distance={distance} />
+            </div>
           ) : (
-            <Button name='guess' />
+            <div className="submit-button">
+              <Button name="guess" />
+            </div>
           )}
         </div>
         <GoogleMapComponent

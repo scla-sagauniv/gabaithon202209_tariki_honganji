@@ -1,4 +1,4 @@
-export const shuffleNumberCounter = target => {
+export const shuffleNumberCounter = (target) => {
   const targetNum = Number(target.getAttribute("data-num"));
 
   if (!targetNum) {
@@ -6,7 +6,7 @@ export const shuffleNumberCounter = target => {
   }
 
   let counterData = null;
-  const speed = 1000 / targetNum;
+  const speed = 800 / targetNum;
   let initNum = 0;
 
   const countUp = () => {
