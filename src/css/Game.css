@@ -14,3 +14,7 @@ button {
   bottom: 128px;
   right: 128px;
 }
+
+.map-container {
+  z-index: -1;
+}

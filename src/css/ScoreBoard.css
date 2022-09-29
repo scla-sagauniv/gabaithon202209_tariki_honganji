@@ -1,10 +1,42 @@
 .score-container {
+  width: 100%;
+  height: 100%;
   color: #fff;
   background-color: #13162f;
-  max-width: 47rem;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  padding-top: 40px;
   animation: 1.2svar (--smooth) single-player-round-results_slideIn__FF_HV
       forwards,
     0.6s var(--smooth) single-player-round-results_shrink__KjCh8 1.4s forwards;
+}
+
+.score-board {
+  position: absolute;
+  top: 65%;
+  left: 0;
+  z-index: 1;
+  width: 100%;
+  height: 35%;
+}
+
+.score {
+  margin-bottom: 20px;
+  color: #fecd19;
+}
+
+.css-5xe99f-MuiLinearProgress-bar1 {
+  background-color: #fecd19;
+}
+
+.sml {
+  color: #fecd19;
+}
+
+.sml::before {
+  content: " ";
+}
+.sml::after {
+  content: "km ";
 }

@@ -8,8 +8,8 @@ import ScoreBoard from "../components/ScoreBoard";
 import { useFireStore } from "../hooks/useFireStore";
 
 const containerStyle = {
-  height: "100vh",
-  width: "100%"
+  height: "calc(100vh - 70px)",
+  width: "100%",
 };
 
 export const Game = () => {
@@ -29,7 +29,7 @@ export const Game = () => {
     <>
       <Navbar />
 
-      <div className='game-area'>
+      <div className="game-area">
         {isOpen ? (
           <>
             <HintMenu hints={question?.hints} />
@@ -38,11 +38,16 @@ export const Game = () => {
         ) : (
           <button onClick={() => setIsOpen(true)}>開く</button>
         )}
-        <div className='submit-button' onClick={showResult}>
+
+        <div onClick={showResult}>
           {isSubmitted && selectedPosition ? (
-            <ScoreBoard distance={distance} />
+            <div className="score-board">
+              <ScoreBoard distance={distance} />
+            </div>
           ) : (
-            <Button name='guess' />
+            <div className="submit-button">
+              <Button name="guess" />
+            </div>
           )}
         </div>
         <GoogleMapComponent
