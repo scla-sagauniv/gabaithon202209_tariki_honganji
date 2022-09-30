@@ -19,11 +19,12 @@ export const Quiz = () => {
   const [selectedPosition, setSelectedPosition] = useState();
   const { register, handleSubmit, reset } = useForm();
   const onSubmit = async data => {
-    const obj = {};
     let hints = [];
     hints.push(data.Hint1);
     hints.push(data.Hint2);
     hints.push(data.Hint3);
+
+    const obj = {};
     obj.hints = hints;
     obj.geopoint = new GeoPoint(
       Number(selectedPosition.lat),

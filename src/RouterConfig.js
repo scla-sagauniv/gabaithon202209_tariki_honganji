@@ -6,6 +6,7 @@ import { Login } from "./page/Login";
 import { Result } from "./page/Result";
 import { Start } from "./page/Start";
 import { Quiz } from "./page/Quiz";
+import PlaceList from "./page/PlaceList";
 
 function RouterConfig() {
   return (
@@ -13,12 +14,13 @@ function RouterConfig() {
       <BrowserRouter>
         <Routes>
           <Route index element={<Start />} />
-          <Route path="/Register" element={<Register />} />
-          <Route path="/Login" element={<Login />} />
-          <Route path="/Game" element={<Game />} />
-          <Route path="/Result" element={<Result />} />
-          <Route path="/Quiz" element={<Quiz />} />
-          <Route path="/*" element={<NotFound />} />
+          <Route path='/Register' element={<Register />} />
+          <Route path='/Login' element={<Login />} />
+          <Route path='/Game' element={<Game />} />
+          <Route path='/Result' element={<Result />} />
+          <Route path='/Quiz' element={<Quiz />} />
+          <Route path='/PlaceList' element={<PlaceList />} />
+          <Route path='/*' element={<NotFound />} />
         </Routes>
       </BrowserRouter>
     </>
