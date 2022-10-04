@@ -9,60 +9,39 @@ import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
 import { useFireStore } from "../hooks/useFireStore";
 
+// 地名、１、２、３、
 const columns = [
-  { id: "name", label: "Name", minWidth: 170 },
-  { id: "code", label: "ISO\u00a0Code", minWidth: 100 },
+  { id: "place", label: "Place", minWidth: 170 },
+  { id: "hint1", label: "Hint1(Object)", minWidth: 100 },
   {
-    id: "population",
-    label: "Population",
-    minWidth: 170,
-    align: "right",
-    format: value => value.toLocaleString("en-US")
+    id: "hint2",
+    label: "Hint2(Description)",
+    minWidth: 170
   },
   {
-    id: "size",
-    label: "Size\u00a0(km\u00b2)",
-    minWidth: 170,
-    align: "right",
-    format: value => value.toLocaleString("en-US")
-  },
-  {
-    id: "density",
-    label: "Density",
-    minWidth: 170,
-    align: "right",
-    format: value => value.toFixed(2)
+    id: "hint3",
+    label: "Hint3(City)",
+    minWidth: 170
   }
 ];
 
-function createData(name, code, population, size) {
-  const density = population / size;
-  return { name, code, population, size, density };
+function createRows(questions) {
+  let rowArr = [];
+  questions.map(question => {
+    rowArr.push(
+      { place: question.name, hint1: question.hints[0], hint2: question.hints[1], hint3: question.hints[2] }
+    );
+  });
+  return rowArr;
 }
 
-const rows = [
-  createData("India", "IN", 1324171354, 3287263),
-  createData("China", "CN", 1403500365, 9596961),
-  createData("Italy", "IT", 60483973, 301340),
-  createData("United States", "US", 327167434, 9833520),
-  createData("Canada", "CA", 37602103, 9984670),
-  createData("Australia", "AU", 25475400, 7692024),
-  createData("Germany", "DE", 83019200, 357578),
-  createData("Ireland", "IE", 4857000, 70273),
-  createData("Mexico", "MX", 126577691, 1972550),
-  createData("Japan", "JP", 126317000, 377973),
-  createData("France", "FR", 67022000, 640679),
-  createData("United Kingdom", "GB", 67545757, 242495),
-  createData("Russia", "RU", 146793744, 17098246),
-  createData("Nigeria", "NG", 200962417, 923768),
-  createData("Brazil", "BR", 210147125, 8515767)
-];
-
 export default function StickyHeadTable() {
+  const [rows, setRows] = React.useState([]);
   const { questions } = useFireStore();
   React.useEffect(() => {
-    console.log(questions);
-    console.log(questions[0]?.name);
+    if (questions.length !== 0) {
+      setRows(createRows(questions));
+    }
     // eslint-disable-next-line
   }, [questions]);
 
@@ -102,11 +81,11 @@ export default function StickyHeadTable() {
                   <TableRow hover role='checkbox' tabIndex={-1} key={row.code}>
                     {columns.map(column => {
                       const value = row[column.id];
+                      console.log("value", value);
+                      console.log("value", row);
                       return (
                         <TableCell key={column.id} align={column.align}>
-                          {column.format && typeof value === "number"
-                            ? column.format(value)
-                            : value}
+                          {value}
                         </TableCell>
                       );
                     })}

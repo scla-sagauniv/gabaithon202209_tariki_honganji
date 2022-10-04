@@ -4,7 +4,6 @@ import StickyHeadTable from "../components/StickyHeadTable";
 const PlaceList = () => {
   return (
     <>
-      <div>hoge</div>
       <StickyHeadTable />
     </>
   );
