@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import "../css/ScoreBoard.css";
 import { shuffleNumberCounter } from "../lib/shuffleNumberCounter";
 import ProgressBar from "./ProgressBar";
+import { Button } from "../components/Button";
 
 const ScoreBoard = ({ distance }) => {
   const sml = Math.floor(distance * 1000) / 1000;
@@ -32,6 +33,9 @@ const ScoreBoard = ({ distance }) => {
           from the correct location.
         </div>
         {score <= 600 && <div className='saga'>差がすごい！！！www</div>}
+        <div style={{ marginTop: "16px" }}>
+          <Button name='HOME' path='/' />
+        </div>
       </div>
     </>
   );

@@ -37,5 +37,5 @@ export const useFireStore = () => {
     setQuestion(questions[rand]);
   };
 
-  return { question };
+  return { question, questions };
 };

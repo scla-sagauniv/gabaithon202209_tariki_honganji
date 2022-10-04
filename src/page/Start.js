@@ -15,7 +15,7 @@ export const Start = () => {
 
   /* ↓ログインしているかどうかを判定する */
   useEffect(() => {
-    onAuthStateChanged(auth, (currentUser) => {
+    onAuthStateChanged(auth, currentUser => {
       setUser(currentUser);
     });
   }, []);
@@ -23,31 +23,34 @@ export const Start = () => {
   return (
     <main>
       <Navbar email={user?.email} />
-      <div className="body-container">
-        <div className="container-title">
-          <p className="body-subtitle">LET'S EXPLORE</p>
-          <p className="body-title">THE SAGA</p>
+      <div className='body-container'>
+        <div className='container-title'>
+          <p className='body-subtitle'>LET'S EXPLORE</p>
+          <p className='body-title'>THE SAGA</p>
         </div>
-        <div className="body-button">
+        <div className='body-button'>
           {user?.email ? (
-            <Button name="Play" path="/Game" />
+            <Button name='Play' path='/Game' />
           ) : (
-            <Button name="GuestPlay" path="/Game" />
+            <Button name='GuestPlay' path='/Game' />
           )}
         </div>
+        <div className='body-button'>
+          <Button name='PlaceList' path='PlaceList' />
+        </div>
         {!user?.email && (
-          <div className="body-button">
-            <Button name="SignUp" path="/Register" />
+          <div className='body-button'>
+            <Button name='SignUp' path='/Register' />
           </div>
         )}
         {!user?.email && (
-          <div className="body-button">
-            <Button name="Login" path="/Login" />
+          <div className='body-button'>
+            <Button name='Login' path='/Login' />
           </div>
         )}
         {user?.email && (
-          <div className="body-button">
-            <Button name="Create Quiz" path="/Quiz" />
+          <div className='body-button'>
+            <Button name='Create Quiz' path='/Quiz' />
           </div>
         )}
       </div>
