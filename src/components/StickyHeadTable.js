@@ -27,6 +27,7 @@ const columns = [
 
 function createRows(questions) {
   let rowArr = [];
+  // eslint-disable-next-line
   questions.map(question => {
     rowArr.push(
       { place: question.name, hint1: question.hints[0], hint2: question.hints[1], hint3: question.hints[2] }
