@@ -26,7 +26,7 @@ export const Quiz = () => {
 
     const obj = {};
     obj.hints = hints;
-    obj.geopoint = new GeoPoint(
+    obj.latlng = new GeoPoint(
       Number(selectedPosition.lat),
       Number(selectedPosition.lng)
     );
