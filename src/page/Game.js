@@ -20,7 +20,7 @@ export const Game = () => {
   console.log("selectPosition", selectedPosition);
   console.log("distance", distance);
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(true);
   function showResult() {
     setIsSubmitted(true);
   }
